@@ -16,5 +16,35 @@ namespace ProjetoDad
         {
             InitializeComponent();
         }
+
+
+        
+
+            
+
+
+
+            
+        private void btnCadastrar_Click(object sender, EventArgs e)
+        {
+            String descricao = txtDescricao.Text;
+            float preco = float.Parse(txtPreco.Text);
+            int qtdeAluno = int.Parse(txtQtdeAluno.Text);
+            int qtdeAulas = int.Parse(txtQtdeAula.Text);
+
+            Modalidade modalidade = new Modalidade(descricao, preco, qtdeAluno, qtdeAulas);
+
+            if (modalidade.cadastrarModalidade())
+            {
+                MessageBox.Show("Cadastrado realizado com Sucesso");
+            }
+            else
+                MessageBox.Show("Erro no cadastro");
+
+            Modalidade modalidade1 = new Modalidade(descricao);
+        }
+                
+          
+        
     }
 }
