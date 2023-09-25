@@ -55,6 +55,7 @@ namespace ProjetoDad
             this.lblBairro = new System.Windows.Forms.Label();
             this.btnFoto = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -88,6 +89,7 @@ namespace ProjetoDad
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.btnCad);
             this.groupBox1.Controls.Add(this.mtxtCep);
             this.groupBox1.Controls.Add(this.mtxtTele);
@@ -123,7 +125,7 @@ namespace ProjetoDad
             // 
             this.btnCad.Location = new System.Drawing.Point(39, 330);
             this.btnCad.Name = "btnCad";
-            this.btnCad.Size = new System.Drawing.Size(573, 23);
+            this.btnCad.Size = new System.Drawing.Size(202, 23);
             this.btnCad.TabIndex = 25;
             this.btnCad.Text = "Cadastrar";
             this.btnCad.UseVisualStyleBackColor = true;
@@ -304,6 +306,16 @@ namespace ProjetoDad
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(266, 329);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(192, 23);
+            this.button1.TabIndex = 26;
+            this.button1.Text = "Atualizar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -349,5 +361,6 @@ namespace ProjetoDad
         private System.Windows.Forms.Button btnCad;
         private System.Windows.Forms.Button btnFoto;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button button1;
     }
 }

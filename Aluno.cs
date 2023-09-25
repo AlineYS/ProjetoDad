@@ -10,7 +10,7 @@ namespace ProjetoDad
     class Aluno
     {
         private string CPF;
-        private string nome; 
+        private string nome;
         private string rua;
         private string numero;
         private string bairro;
@@ -21,7 +21,7 @@ namespace ProjetoDad
         private string estado;
         private string email;
         private byte[] foto;
-        private bool Ativo; 
+        private bool Ativo;
 
         public void setCPF(string CPF)
         {
@@ -144,16 +144,38 @@ namespace ProjetoDad
             setEstado(estado);
             setTelefone(telefone);
             setEmail(email);
-        
+
         }
-        
+
+        public bool atualizarAluno()
+        {
+            bool exc = false;
+            try
+            {
+                DAO_Conexao.con.Open();
+                //Console.WriteLine("update Estudio_Aluno set nomeAluno = '" + nome + "', ruaAluno = '" + rua + "', numeroAluno = '" + numero + "', bairroAluno = '" + bairro + "' complementoAluno ='" + complemento + "',CEPAluno='" + CEP + "', cidadeAluno='" + cidade + "', estadoAluno='" + estado + "', telefoneAluno = '" + telefone + "', emailAluno = '" + email + "' where CPFAluno = '" + CPF + "'");
+                MySqlCommand atualiza = new MySqlCommand("update Estudio_Aluno set nomeAluno = '" + nome + "', ruaAluno = '" + rua + "', numeroAluno = '" + numero + "', bairroAluno = '" + bairro + "', complementoAluno ='" + complemento + "',CEPAluno='" + CEP + "', telefoneAluno = '" + telefone + "', cidadeAluno='" + cidade + "', estadoAluno='" + estado + "', emailAluno = '" + email + "' where CPFAluno = '" + CPF + "'", DAO_Conexao.con);
+                atualiza.ExecuteNonQuery();
+                exc = true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            finally
+            {
+                DAO_Conexao.con.Close();
+            }
+            return exc;
+        }//atualizarAluno
+
         public bool cadastrarAluno()
         {
             bool cad = false;
             try
             {
                 DAO_Conexao.con.Open();
-                MySqlCommand insere = new MySqlCommand("insert into Estudio_Aluno (CPFAluno, nomeAluno, numeroAluno," + "bairroAluno, complementoAluno, CEPAluno, cidadeAluno, estadoAluno, telefoneAluno, emailAluno, fotoAluno) values " + "('" + CPF + "','" + nome + "','" + rua + "','" + numero + "','" + bairro + "','" + complemento + "','" + CEP + "','" + cidade + "','" + estado + "','" + telefone + "','" + email + "')", DAO_Conexao.con);
+                MySqlCommand insere = new MySqlCommand("insert into Estudio_Aluno (CPFAluno, nomeAluno, ruaAluno, numeroAluno, bairroAluno, complementoAluno, CEPAluno, cidadeAluno, estadoAluno, telefoneAluno, emailAluno) values " + "('" + CPF + "','" + nome + "','" + rua + "','" + numero + "','" + bairro + "','" + complemento + "','" + CEP + "','" + cidade + "','" + estado + "','" + telefone + "','" + email + "')", DAO_Conexao.con);
                 insere.ExecuteNonQuery();
                 cad = true;
             }

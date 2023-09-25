@@ -75,5 +75,26 @@ namespace ProjetoDad
 
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Aluno aluno = new Aluno(mtxtCpf.Text, txtNome.Text, txtEnder.Text, txtN.Text, txtBairro.Text, txtComple.Text, mtxtCep.Text, mtxtTele.Text, txtCidade.Text, txtEstado.Text, txtEmail.Text);
+
+            if (aluno.consultarAluno())
+            {
+                if (aluno.atualizarAluno())
+                {
+                    MessageBox.Show("Dados atualizados com sucesso!");
+
+                }
+                else
+                {
+                    MessageBox.Show("Não é possível atualizar os dados desse aluno");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Não é possível atualizar um aluno que ainda não foi cadastrado");
+            }
+        }
     }
 }
