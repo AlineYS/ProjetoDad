@@ -33,13 +33,18 @@ namespace ProjetoDad
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Modalidade modalidade = new Modalidade(comboBox1.Text);
             
-                    if (modalidade.excluirModalidade())
+            Modalidade modalidade = new Modalidade(comboBox1.Text);
+            int id = comboBox1.SelectedIndex;
+
+            if (modalidade.excluirModalidade(id + 1))
                     {
                         MessageBox.Show("Modalidade Excluída");
                     }
-                
+            else
+            {
+                MessageBox.Show("Erro ao excluir");
+            }                
             
         }
     }
