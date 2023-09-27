@@ -93,13 +93,13 @@ namespace ProjetoDad
 
         }
 
-        public bool excluirModalidade()
+        public bool excluirModalidade(int id)
         {
             bool exc = false;
             try
             {
                 DAO_Conexao.con.Open();
-                MySqlCommand exclui = new MySqlCommand("update Estudio_Modalidade set ativo " + "= 1 where descricaoModalidade = '" + descricao + "'", DAO_Conexao.con);
+                MySqlCommand exclui = new MySqlCommand("update Estudio_Modalidade set ativa = 1 where idEstudio_Modalidade="+id, DAO_Conexao.con);
                 exclui.ExecuteNonQuery();
                 exc = true;
             }
