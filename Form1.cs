@@ -95,5 +95,17 @@ namespace ProjetoDad
             form5.MdiParent = this;
             form5.Show(); 
         }
+
+        private void consultarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void excluirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form6 form6 = new Form6();
+            form6.MdiParent = this;
+            form6.Show();
+        }
     }
 }

@@ -30,5 +30,10 @@ namespace ProjetoDad
                 }
             }
         }
+
+        private void mtxtCpfEx_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
     }
 }

@@ -40,6 +40,7 @@ namespace ProjetoDad
             this.mtxtCpfEx.Name = "mtxtCpfEx";
             this.mtxtCpfEx.Size = new System.Drawing.Size(132, 20);
             this.mtxtCpfEx.TabIndex = 0;
+            this.mtxtCpfEx.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mtxtCpfEx_MaskInputRejected);
             this.mtxtCpfEx.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.mtxtCpfEx_KeyPress);
             // 
             // lblCpf

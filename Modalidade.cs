@@ -57,5 +57,61 @@ namespace ProjetoDad
             }
             return cad;
         }
+
+        public MySqlDataReader consultarTodasModalidade()
+        {
+            MySqlDataReader reader = null;
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlCommand select = new MySqlCommand("Select * from Estudio_Modalidade",DAO_Conexao.con);
+
+                reader = select.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            return reader;
+
+        }
+        public MySqlDataReader consultarModalidade(int id)
+        {
+            MySqlDataReader reader = null;
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlCommand select = new MySqlCommand("Select * from Estudio_Modalidade where idEstudio_Modalidade="+ id, DAO_Conexao.con);
+
+                reader = select.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            return reader;
+
+        }
+
+        public bool excluirModalidade()
+        {
+            bool exc = false;
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlCommand exclui = new MySqlCommand("update Estudio_Modalidade set ativo " + "= 1 where descricaoModalidade = '" + descricao + "'", DAO_Conexao.con);
+                exclui.ExecuteNonQuery();
+                exc = true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            finally
+            {
+                DAO_Conexao.con.Close();
+            }
+            return exc;
+        }
     }
 }
