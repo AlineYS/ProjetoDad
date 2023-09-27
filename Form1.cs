@@ -93,7 +93,7 @@ namespace ProjetoDad
         {
             Form5 form5 = new Form5();
             form5.MdiParent = this;
-            form5.Show();
+            form5.Show(); 
         }
     }
 }
