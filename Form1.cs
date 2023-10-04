@@ -98,7 +98,9 @@ namespace ProjetoDad
 
         private void consultarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            Form8 form8 = new Form8();
+            form8.MdiParent = this;
+            form8.Show();
         }
 
         private void excluirToolStripMenuItem_Click(object sender, EventArgs e)
@@ -106,6 +108,13 @@ namespace ProjetoDad
             Form6 form6 = new Form6();
             form6.MdiParent = this;
             form6.Show();
+        }
+
+        private void atualizarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form7 form7 = new Form7();
+            form7.MdiParent = this;
+            form7.Show();
         }
     }
 }

@@ -112,6 +112,7 @@ namespace ProjetoDad
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(198, 21);
             this.comboBox1.TabIndex = 1;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -130,7 +131,7 @@ namespace ProjetoDad
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form8";
-            this.Text = "Form8";
+            this.Text = "Consultar";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

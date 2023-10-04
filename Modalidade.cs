@@ -113,5 +113,47 @@ namespace ProjetoDad
             }
             return exc;
         }
+
+        public bool atualizarModalidade(int id)
+        {
+            bool cad = false;
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlCommand insere = new MySqlCommand("update Estudio_Modalidade set descricaoModalidade='"+descricao+"', precoModalidade="+preco+ ", qtdeAlunos="+qtde_alunos+ ", qtdeAulas="+qtde_aulas+" where idEstudio_Modalidade=" + id, DAO_Conexao.con);
+                insere.ExecuteNonQuery();
+                cad = true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            finally
+            {
+                DAO_Conexao.con.Close();
+            }
+            return cad;
+        }
+
+        public bool ativarModalidade(int id)
+        {
+            bool exc = false;
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlCommand ativa = new MySqlCommand("update Estudio_Modalidade set ativa = 0 where idEstudio_Modalidade="+id, DAO_Conexao.con);
+                ativa.ExecuteNonQuery();
+                exc = true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            finally
+            {
+                DAO_Conexao.con.Close();
+            }
+            return exc;
+        }
     }
 }
