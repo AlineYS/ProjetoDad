@@ -43,8 +43,10 @@ namespace ProjetoDad
 
             Modalidade modalidade1 = new Modalidade(descricao);
         }
-                
-          
-        
+
+        private void txtDescricao_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

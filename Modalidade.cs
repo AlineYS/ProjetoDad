@@ -92,6 +92,23 @@ namespace ProjetoDad
             return reader;
 
         }
+        public MySqlDataReader consultarModalidadeNome(String nome)
+        {
+            MySqlDataReader reader = null;
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlCommand select = new MySqlCommand("Select * from Estudio_Modalidade where descricaoModalidade='" + nome+"'", DAO_Conexao.con);
+
+                reader = select.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            return reader;
+
+        }
 
         public bool excluirModalidade(int id)
         {
@@ -101,6 +118,48 @@ namespace ProjetoDad
                 DAO_Conexao.con.Open();
                 MySqlCommand exclui = new MySqlCommand("update Estudio_Modalidade set ativa = 1 where idEstudio_Modalidade="+id, DAO_Conexao.con);
                 exclui.ExecuteNonQuery();
+                exc = true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            finally
+            {
+                DAO_Conexao.con.Close();
+            }
+            return exc;
+        }
+
+        public bool atualizarModalidade(int id)
+        {
+            bool cad = false;
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlCommand insere = new MySqlCommand("update Estudio_Modalidade set descricaoModalidade='"+descricao+"', precoModalidade="+preco+ ", qtdeAlunos="+qtde_alunos+ ", qtdeAulas="+qtde_aulas+" where idEstudio_Modalidade=" + id, DAO_Conexao.con);
+                insere.ExecuteNonQuery();
+                cad = true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            finally
+            {
+                DAO_Conexao.con.Close();
+            }
+            return cad;
+        }
+
+        public bool ativarModalidade(int id)
+        {
+            bool exc = false;
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlCommand ativa = new MySqlCommand("update Estudio_Modalidade set ativa = 0 where idEstudio_Modalidade="+id, DAO_Conexao.con);
+                ativa.ExecuteNonQuery();
                 exc = true;
             }
             catch (Exception ex)
