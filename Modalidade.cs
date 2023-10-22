@@ -92,6 +92,23 @@ namespace ProjetoDad
             return reader;
 
         }
+        public MySqlDataReader consultarModalidadeNome(String nome)
+        {
+            MySqlDataReader reader = null;
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlCommand select = new MySqlCommand("Select * from Estudio_Modalidade where descricaoModalidade='" + nome+"'", DAO_Conexao.con);
+
+                reader = select.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            return reader;
+
+        }
 
         public bool excluirModalidade(int id)
         {

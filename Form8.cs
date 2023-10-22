@@ -49,5 +49,10 @@ namespace ProjetoDad
             DAO_Conexao.con.Close();
           
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

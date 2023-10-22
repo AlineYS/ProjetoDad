@@ -116,5 +116,19 @@ namespace ProjetoDad
             form7.MdiParent = this;
             form7.Show();
         }
+
+        private void cadastrarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Form9 form9 = new Form9();
+            form9.MdiParent = this;
+            form9.Show();
+        }
+
+        private void excluirToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Form10 form10 = new Form10();
+            form10.MdiParent = this;
+            form10.Show();
+        }
     }
 }
