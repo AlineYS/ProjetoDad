@@ -12,11 +12,15 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ProjetoDad
 {
-    public partial class Form10 : Form
+    public partial class Form11 : Form
     {
-        public Form10()
+        public Form11()
         {
             InitializeComponent();
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox3.DropDownStyle = ComboBoxStyle.DropDownList;
+            textBox1.Enabled = false;
             Modalidade mod = new Modalidade();
             MySqlDataReader dr = mod.consultarTodasModalidade();
             while (dr.Read())
@@ -27,11 +31,6 @@ namespace ProjetoDad
             DAO_Conexao.con.Close();
         }
 
-        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             comboBox2.Items.Clear();
@@ -40,7 +39,7 @@ namespace ProjetoDad
             Turma turma = new Turma();
             Modalidade modalidade = new Modalidade(nome);
             MySqlDataReader rd = modalidade.consultarModalidadeNome(nome);
-            
+
             while (rd.Read())
             {
                 {
@@ -54,55 +53,10 @@ namespace ProjetoDad
             while (a.Read())
             {
                 int Amodalidade = Convert.ToInt32(a["modalidade"]);
-                if ( Amodalidade == idModalidade)
-                comboBox2.Items.Add(a["dia_semana"].ToString());
+                if (Amodalidade == idModalidade)
+                    comboBox2.Items.Add(a["dia_semana"].ToString());
             }
             DAO_Conexao.con.Close();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            int idModalidade = 0;
-            String dia_semana = comboBox2.Text;
-            String hora = comboBox3.Text;
-            string nome = comboBox1.Text;
-            Modalidade modalidade = new Modalidade(nome);
-            MySqlDataReader rd = modalidade.consultarModalidadeNome(nome);
-           
-
-            while (rd.Read())
-            {
-                {
-                    idModalidade = int.Parse(rd["idEstudio_Modalidade"].ToString());
-
-                }
-            }
-            DAO_Conexao.con.Close();
-
-           
-
-            Turma turma = new Turma();
-            if (turma.excluirTurma(idModalidade, dia_semana, hora))
-            {
-                MessageBox.Show("Turma Excluída");
-            }
-            else
-            {
-                MessageBox.Show("Erro ao excluir");
-            }
-
-           
-
-        }
-
-        private void Form10_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
@@ -132,9 +86,39 @@ namespace ProjetoDad
                     comboBox3.Items.Add(v["hora"].ToString());
             }
             DAO_Conexao.con.Close();
+        }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int idModalidade = 0;
+            String dia_semana = comboBox2.Text;
+            String hora = comboBox3.Text;
+            string nome = comboBox1.Text;
+            Modalidade modalidade = new Modalidade(nome);
+            MySqlDataReader rd = modalidade.consultarModalidadeNome(nome);
+
+
+            while (rd.Read())
+            {
+                {
+                    idModalidade = int.Parse(rd["idEstudio_Modalidade"].ToString());
+
+                }
+            }
+            DAO_Conexao.con.Close();
+
+            Turma turma = new Turma();
+            MySqlDataReader a = turma.consultarTurma(idModalidade, dia_semana, hora);
             
-
+            
+            while (a.Read())
+            {
+                {
+                    textBox1.Text = (a["professor"].ToString());
+                    
+                }
+            }
+            DAO_Conexao.con.Close();
         }
 
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)

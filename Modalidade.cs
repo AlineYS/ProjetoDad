@@ -172,5 +172,29 @@ namespace ProjetoDad
             }
             return exc;
         }
+
+        public bool confirmaModalidade(String des)
+        {
+            bool existe = false;
+            try
+            {
+                DAO_Conexao.con.Open();
+                MySqlCommand consulta = new MySqlCommand("SELECT * FROM Estudio_Modalidade " + "WHERE descricaoModalidade='" + des + "'", DAO_Conexao.con);
+                MySqlDataReader resultado = consulta.ExecuteReader();
+                if (resultado.Read())
+                {
+                    existe = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            finally
+            {
+                DAO_Conexao.con.Close();
+            }
+            return existe;
+        }
     }
 }

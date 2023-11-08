@@ -40,7 +40,6 @@ namespace ProjetoDad
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtAlunos = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,9 +55,9 @@ namespace ProjetoDad
             this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(131, 47);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(553, 414);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
@@ -67,7 +66,7 @@ namespace ProjetoDad
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(100, 359);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(311, 28);
             this.button2.TabIndex = 7;
@@ -78,7 +77,7 @@ namespace ProjetoDad
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(100, 304);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(311, 28);
             this.button1.TabIndex = 6;
@@ -89,7 +88,7 @@ namespace ProjetoDad
             // txtAulas
             // 
             this.txtAulas.Location = new System.Drawing.Point(159, 240);
-            this.txtAulas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAulas.Margin = new System.Windows.Forms.Padding(4);
             this.txtAulas.Name = "txtAulas";
             this.txtAulas.Size = new System.Drawing.Size(263, 22);
             this.txtAulas.TabIndex = 5;
@@ -117,7 +116,7 @@ namespace ProjetoDad
             // txtPreco
             // 
             this.txtPreco.Location = new System.Drawing.Point(159, 139);
-            this.txtPreco.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPreco.Margin = new System.Windows.Forms.Padding(4);
             this.txtPreco.Name = "txtPreco";
             this.txtPreco.Size = new System.Drawing.Size(263, 22);
             this.txtPreco.TabIndex = 3;
@@ -136,7 +135,7 @@ namespace ProjetoDad
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(159, 78);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(263, 24);
             this.comboBox1.TabIndex = 1;
@@ -155,30 +154,19 @@ namespace ProjetoDad
             // txtAlunos
             // 
             this.txtAlunos.Location = new System.Drawing.Point(289, 236);
-            this.txtAlunos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAlunos.Margin = new System.Windows.Forms.Padding(4);
             this.txtAlunos.Name = "txtAlunos";
             this.txtAlunos.Size = new System.Drawing.Size(263, 22);
             this.txtAlunos.TabIndex = 4;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(721, 86);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(42, 16);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Teste";
             // 
             // Form7
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(843, 497);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.txtAlunos);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form7";
             this.Text = "Atualizar";
             this.groupBox1.ResumeLayout(false);
@@ -201,6 +189,5 @@ namespace ProjetoDad
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtAlunos;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label5;
     }
 }

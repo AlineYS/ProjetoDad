@@ -8,30 +8,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ProjetoDad
 {
-    public partial class Form10 : Form
+    public partial class Form13 : Form
     {
-        public Form10()
+        
+        public Form13()
         {
             InitializeComponent();
             Modalidade mod = new Modalidade();
             MySqlDataReader dr = mod.consultarTodasModalidade();
             while (dr.Read())
-            {
+            {   
+                if (dr["ativa"].ToString() == 0.ToString())
                 comboBox1.Items.Add(dr["descricaoModalidade"].ToString());
 
             }
             DAO_Conexao.con.Close();
-        }
-
-        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
         }
-
+        int idTurma = 0;
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             comboBox2.Items.Clear();
@@ -40,7 +37,7 @@ namespace ProjetoDad
             Turma turma = new Turma();
             Modalidade modalidade = new Modalidade(nome);
             MySqlDataReader rd = modalidade.consultarModalidadeNome(nome);
-            
+
             while (rd.Read())
             {
                 {
@@ -54,55 +51,10 @@ namespace ProjetoDad
             while (a.Read())
             {
                 int Amodalidade = Convert.ToInt32(a["modalidade"]);
-                if ( Amodalidade == idModalidade)
-                comboBox2.Items.Add(a["dia_semana"].ToString());
+                if (Amodalidade == idModalidade)
+                    comboBox2.Items.Add(a["dia_semana"].ToString());
             }
             DAO_Conexao.con.Close();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            int idModalidade = 0;
-            String dia_semana = comboBox2.Text;
-            String hora = comboBox3.Text;
-            string nome = comboBox1.Text;
-            Modalidade modalidade = new Modalidade(nome);
-            MySqlDataReader rd = modalidade.consultarModalidadeNome(nome);
-           
-
-            while (rd.Read())
-            {
-                {
-                    idModalidade = int.Parse(rd["idEstudio_Modalidade"].ToString());
-
-                }
-            }
-            DAO_Conexao.con.Close();
-
-           
-
-            Turma turma = new Turma();
-            if (turma.excluirTurma(idModalidade, dia_semana, hora))
-            {
-                MessageBox.Show("Turma Excluída");
-            }
-            else
-            {
-                MessageBox.Show("Erro ao excluir");
-            }
-
-           
-
-        }
-
-        private void Form10_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
@@ -132,12 +84,73 @@ namespace ProjetoDad
                     comboBox3.Items.Add(v["hora"].ToString());
             }
             DAO_Conexao.con.Close();
-
-            
-
         }
 
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {   
+
+            int idModalidade = 0;
+            String dia_semana = comboBox2.Text;
+            String hora = comboBox3.Text;
+            string nome = comboBox1.Text;
+            Modalidade modalidade = new Modalidade(nome);
+            MySqlDataReader rd = modalidade.consultarModalidadeNome(nome);
+
+
+            while (rd.Read())
+            {
+                {
+                    idModalidade = int.Parse(rd["idEstudio_Modalidade"].ToString());
+
+                }
+            }
+            DAO_Conexao.con.Close();
+
+            
+            Turma turma = new Turma();
+            MySqlDataReader a = turma.consultarTurma(idModalidade, dia_semana, hora);
+
+
+            while (a.Read())
+            {
+                {
+                    textBox1.Text = (a["professor"].ToString());
+                    idTurma = int.Parse(a["idEstudio_Turma"].ToString());
+                }
+            }
+            DAO_Conexao.con.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {   
+            int idModalidade = 0;
+            string nome = comboBox1.Text;
+            Modalidade modalidade = new Modalidade(nome);
+            MySqlDataReader rd = modalidade.consultarModalidadeNome(nome);
+
+
+            while (rd.Read())
+            {
+                {
+                    idModalidade = int.Parse(rd["idEstudio_Modalidade"].ToString());
+
+                }
+            }
+            DAO_Conexao.con.Close();
+
+            String dia_semana = comboBox2.Text;
+            String hora = comboBox3.Text;
+            String professor = textBox1.Text;
+            Turma turma = new Turma();
+            if (turma.atualizarTurma(professor, dia_semana, hora, idModalidade, idTurma))
+            {
+                MessageBox.Show("Atualizado com Sucesso");
+            }
+            else
+                MessageBox.Show("Erro ao atualizar");
+        }
+
+        private void Form13_Load(object sender, EventArgs e)
         {
 
         }

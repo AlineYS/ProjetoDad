@@ -29,9 +29,19 @@ namespace ProjetoDad
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int index = comboBox1.SelectedIndex;
             Modalidade mod = new Modalidade();
-            MySqlDataReader reader = mod.consultarModalidade(index + 1);
+            int id = 0;
+            MySqlDataReader dr = mod.consultarTodasModalidade();
+            while (dr.Read())
+            {
+                if (dr["descricaoModalidade"].ToString() == comboBox1.Text)
+                {
+                    id = int.Parse(dr["idEstudio_Modalidade"].ToString());
+                }
+            }
+            DAO_Conexao.con.Close();
+            Modalidade modalidade = new Modalidade();
+            MySqlDataReader reader = modalidade.consultarModalidade(id);
             while (reader.Read())
             {
                 txtPreco.Text = reader["precoModalidade"].ToString();
@@ -43,7 +53,18 @@ namespace ProjetoDad
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int index = comboBox1.SelectedIndex;
+            Modalidade mod = new Modalidade();
+            int id = 0;
+            MySqlDataReader dr = mod.consultarTodasModalidade();
+            while (dr.Read())
+            {
+                if (dr["descricaoModalidade"].ToString() == comboBox1.Text)
+                {
+                    id = int.Parse(dr["idEstudio_Modalidade"].ToString());
+                }
+            }
+            DAO_Conexao.con.Close();
+
             String descricao = comboBox1.Text;
             float preco = float.Parse(txtPreco.Text);
             int qtdeAluno = int.Parse(txtAlunos.Text);
@@ -51,7 +72,7 @@ namespace ProjetoDad
 
             Modalidade modalidade = new Modalidade(descricao, preco, qtdeAluno, qtdeAulas);
 
-            if (modalidade.atualizarModalidade(index + 1))
+            if (modalidade.atualizarModalidade(id))
             {
                 MessageBox.Show("Atualizado com Sucesso");
             }
