@@ -64,7 +64,15 @@ namespace ProjetoDad
                 //MessageBox.Show(Usuário Restrito);
                 groupBox1.Visible = false;
                 menuStrip1.Enabled = true;
-                cadastrarAlunoToolStripMenuItem.Enabled = false;
+                cadastrarLoginToolStripMenuItem.Enabled = false;
+                cadastrarToolStripMenuItem.Enabled = false;
+                cadastrarToolStripMenuItem1.Enabled = false;
+                excluirToolStripMenuItem.Enabled = false;
+                excluirToolStripMenuItem1.Enabled = false; 
+                atualizarToolStripMenuItem.Enabled = false;
+                atualizarToolStripMenuItem1.Enabled = false;
+                cadastrarToolStripMenuItem2.Enabled = false;
+                excluirToolStripMenuItem2.Enabled = false;
             }
         }
 
@@ -129,6 +137,48 @@ namespace ProjetoDad
             Form10 form10 = new Form10();
             form10.MdiParent = this;
             form10.Show();
+        }
+
+        private void consultarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Form11 form11 = new Form11();
+            form11.MdiParent = this;
+            form11.Show();
+        }
+
+        private void consultarAlunoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form12 form12 = new Form12();
+            form12.MdiParent = this;
+            form12.Show();
+        }
+
+        private void atualizarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Form13 form13 = new Form13();
+            form13.MdiParent = this;
+            form13.Show();
+        }
+
+        private void cadastrarToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            Form14 form14 = new Form14();
+            form14.MdiParent = this;
+            form14.Show();
+        }
+
+        private void excluirToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            Form15 form15 = new Form15();
+            form15.MdiParent = this;
+            form15.Show();
+        }
+
+        private void consultarToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            Form16 form16 = new Form16();
+            form16.MdiParent = this;
+            form16.Show();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -29,6 +30,7 @@ namespace ProjetoDad
                 tipo = 1;//adm
             else if (comboBox1.SelectedIndex == 1)
                 tipo = 2;//registro
+           
             if (DAO_Conexao.CadLogin(textBox1.Text, textBox2.Text, tipo))
                 MessageBox.Show("Cadastro realizado com sucesso");
             else

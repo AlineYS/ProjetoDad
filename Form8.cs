@@ -20,8 +20,10 @@ namespace ProjetoDad
             MySqlDataReader dr = mod.consultarTodasModalidade();
             while (dr.Read())
             {
-                comboBox1.Items.Add(dr["descricaoModalidade"].ToString());
-
+                if (dr["ativa"].ToString() == "0")
+                {
+                    comboBox1.Items.Add(dr["descricaoModalidade"].ToString());
+                }
             }
             DAO_Conexao.con.Close();
 
@@ -32,10 +34,20 @@ namespace ProjetoDad
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Modalidade mod = new Modalidade();
+            int id = 0;
+            MySqlDataReader dr = mod.consultarTodasModalidade();
+            while (dr.Read())
+            {
+                if (dr["descricaoModalidade"].ToString() == comboBox1.Text)
+                {
+                    id = int.Parse(dr["idEstudio_Modalidade"].ToString());
+                }
+            }
+            DAO_Conexao.con.Close();
 
             Modalidade modalidade = new Modalidade(comboBox1.Text);
-            int id = comboBox1.SelectedIndex;
-            MySqlDataReader rd = modalidade.consultarModalidade(id + 1);
+            MySqlDataReader rd = modalidade.consultarModalidade(id);
 
             while (rd.Read())
             {

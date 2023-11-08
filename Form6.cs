@@ -33,13 +33,25 @@ namespace ProjetoDad
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
-            Modalidade modalidade = new Modalidade(comboBox1.Text);
-            int id = comboBox1.SelectedIndex;
+            Modalidade mod = new Modalidade();
+            int id = 0;
+            MySqlDataReader dr = mod.consultarTodasModalidade();
+            while (dr.Read())
+            {
+                if (dr["descricaoModalidade"].ToString() == comboBox1.Text)
+                {
+                    id = int.Parse(dr["idEstudio_Modalidade"].ToString());
+                }
+            }
+            DAO_Conexao.con.Close();
 
-            if (modalidade.excluirModalidade(id + 1))
+            Modalidade modalidade = new Modalidade(comboBox1.Text);
+            Turma turma = new Turma();
+            if (modalidade.excluirModalidade(id))
                     {
                         MessageBox.Show("Modalidade Excluída");
+                        turma.excluirTurmaModalidade(id);
+                       
                     }
             else
             {

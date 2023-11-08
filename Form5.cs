@@ -34,14 +34,21 @@ namespace ProjetoDad
 
             Modalidade modalidade = new Modalidade(descricao, preco, qtdeAluno, qtdeAulas);
 
-            if (modalidade.cadastrarModalidade())
+            if (modalidade.confirmaModalidade(descricao))
             {
-                MessageBox.Show("Cadastrado realizado com Sucesso");
+                MessageBox.Show("Modalidade já cadastrada");
             }
             else
-                MessageBox.Show("Erro no cadastro");
+            {
+                if (modalidade.cadastrarModalidade())
+                {
+                    MessageBox.Show("Cadastrado realizado com Sucesso");
+                }
+                else
+                    MessageBox.Show("Erro no cadastro");
 
-            Modalidade modalidade1 = new Modalidade(descricao);
+                Modalidade modalidade1 = new Modalidade(descricao);
+            }
         }
 
         private void txtDescricao_TextChanged(object sender, EventArgs e)
